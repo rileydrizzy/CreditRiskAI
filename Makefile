@@ -28,3 +28,6 @@ export:
 force backup: # To push to Github without running precommit
 	git commit --no-verify -m "backup"
 	git push origin 
+
+update: #retrieve new 
+	git pull origin main
