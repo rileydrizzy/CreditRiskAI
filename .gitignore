@@ -92,7 +92,6 @@ target/
 
 # Data and models
 data/*/*
-models/*
 !.gitkeep
 
 # Develoment Enviroment
