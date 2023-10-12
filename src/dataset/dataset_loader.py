@@ -1,20 +1,20 @@
 """_summary_
 """
 
-import opendatasets as opd
+import subprocess
 from loguru import logger
 #from utils.logger import logger
-
-url = 'https://www.kaggle.com/competitions/amex-default-prediction/data'
-dir = 'data'
 
 def main():
     logger.info("Commencing the data unzipping process.")
     try:
-        opd.download(dataset_id_or_url=url, data_dir= dir)
+        cmd_3= ['kaggle' ,'competitions' ,'download' ,'-c','amex-default-prediction',
+        '-f','sample_submission.csv',]
+        result = subprocess.run(cmd_3, check= True, capture_output=True, text= True )
+        # TODO write logger code and remaining file code, unzip file, and delete zip file
         logger.info('Data downloaded succesful')
     except Exception as error:
-        logger.error("Failed to download")
+        logger.error(f"Failed to download as {error}")
 
 
 if __name__ == '__main__':
