@@ -12,9 +12,11 @@ Usage:
   - `logger.warning("Warning message")`
   - `logger.error("Error message")`
   - `logger.critical("Critical message")`
+  - `logger.succues("success messgae")`
 """
 
 from pathlib import Path
+
 from loguru import logger
 
 FORMAT_STYLE = (
