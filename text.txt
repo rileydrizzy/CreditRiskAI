@@ -1,2 +1,0 @@
-export KAGGLE_USERNAME=rileydrizzy
-export KAGGLE_KEY=d09de9e473d820b5ed470abd86c625b0
