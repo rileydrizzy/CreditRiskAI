@@ -28,7 +28,8 @@ COMMAND = [
     "-p",
     "data/raw/amex-default-prediction",
 ]
-DATA_DIR = "data/raw/amex-default-prediction/"
+DATA_DIR = "data/raw/amex-default-prediction/"  
+# /kaggle/input/amex-default-prediction/train_labels.csv
 
 
 def downlaod_file(cmd, unzipped_file_path, data_dir):
@@ -64,8 +65,7 @@ def main():
         logger.success("files downloaded succesful")
 
     except Exception as error:
-        logger.error(f"failed due to {error}")
-        logger.exception("Data unloading was unsuccesfully")
+        logger.exception(f"Data unloading was unsuccesfully, due to {error}")
 
 
 if __name__ == "__main__":
