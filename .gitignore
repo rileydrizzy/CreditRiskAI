@@ -94,5 +94,8 @@ target/
 data/*/*
 !.gitkeep
 
-# Develoment Enviroment
-dev
+# Development Enviroment
+**/development/
+
+# Keys
+set_environment_variables.sh

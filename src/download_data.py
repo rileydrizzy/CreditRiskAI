@@ -1,4 +1,4 @@
-""""
+"""Dataset Download Module
 This script perform the data unloading steps. The zip file is unzipped, as a json file.
 
 functions:
@@ -7,7 +7,6 @@ functions:
 
 """
 
-# TODO Clean up code
 
 import os
 import subprocess
@@ -15,6 +14,9 @@ import zipfile
 
 # from utils.logger import logger
 from loguru import logger
+
+DATA_DIR = "data/raw/amex-default-prediction/"
+# kaggle/input/amex-default-prediction/raw
 
 data_files = ["train_labels.csv", "train_data.csv"]
 COMMAND = [
@@ -26,10 +28,8 @@ COMMAND = [
     "-f",
     "FILE",
     "-p",
-    "data/raw/amex-default-prediction",
+    DATA_DIR,
 ]
-DATA_DIR = "data/raw/amex-default-prediction/"  
-# /kaggle/input/amex-default-prediction/train_labels.csv
 
 
 def downlaod_file(cmd, unzipped_file_path, data_dir):
@@ -37,7 +37,7 @@ def downlaod_file(cmd, unzipped_file_path, data_dir):
 
     Parameters
     ----------
-    cmd : _type_
+    cmd : list
         _description_
     unzipped_file : _type_
         _description_
@@ -46,8 +46,8 @@ def downlaod_file(cmd, unzipped_file_path, data_dir):
     """
     subprocess.run(cmd, check=True, text=True)
     # Unzipping and delete the zipped file to free storage
-    with zipfile.ZipFile(unzipped_file_path, "r") as zip_ref:
-        zip_ref.extractall(data_dir)
+    with zipfile.ZipFile(unzipped_file_path, "r") as zippped_file:
+        zippped_file.extractall(data_dir)
     if os.path.exists(unzipped_file_path):
         os.remove(unzipped_file_path)
 
@@ -62,7 +62,7 @@ def main():
             unzipfile_path = DATA_DIR + file + ".zip"
             downlaod_file(COMMAND, unzipfile_path, DATA_DIR)
             logger.info(f" {file} downloaded succesful")
-        logger.success("files downloaded succesful")
+        logger.success("All files downloaded succesful")
 
     except Exception as error:
         logger.exception(f"Data unloading was unsuccesfully, due to {error}")
