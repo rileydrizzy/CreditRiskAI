@@ -12,8 +12,8 @@ import os
 import subprocess
 import zipfile
 
-# from utils.logger import logger
-from loguru import logger
+from utils.logger import logger
+
 
 DATA_DIR = "data/raw/amex-default-prediction/"
 # kaggle/input/amex-default-prediction/raw
