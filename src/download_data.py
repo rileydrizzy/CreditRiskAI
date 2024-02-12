@@ -1,12 +1,21 @@
 """Dataset Download Module
-This script perform the data unloading steps. The zip file is unzipped, as a json file.
 
-functions:
-    *unzip_file - unzip the zip file and export it
-    *main - the main function to run the script
+This module provides functionality to download and unzip data files for 
+the Amex Default Prediction Kaggle competition. It utilizes the Kaggle API to retrieve 
+the required data files in ZIP format and extracts them into a specified data directory.
 
+Functions:
+    download_file(cmd, unzipped_file_path, data_dir):
+        Downloads and extracts a data file from Kaggle.
+
+    main():
+        Main function to execute the script for downloading and unzipping data.
+
+Usage:
+    Ensure that the Kaggle API is properly configured on your system for successful data retrieval.
+
+    
 """
-
 
 import os
 import subprocess
@@ -33,18 +42,20 @@ COMMAND = [
 
 
 def downlaod_file(cmd, unzipped_file_path, data_dir):
-    """_summary_
+    """Download and unzip the data file from Kaggle.
 
     Parameters
     ----------
     cmd : list
-        _description_
-    unzipped_file : _type_
-        _description_
-    data_dir : _type_
-        _description_
+        Command to download the data file.
+    unzipped_file_path : str
+        Path to the downloaded and unzipped file.
+    data_dir : str
+        Directory where the data will be stored.
     """
+
     subprocess.run(cmd, check=True, text=True)
+
     # Unzipping and delete the zipped file to free storage
     with zipfile.ZipFile(unzipped_file_path, "r") as zippped_file:
         zippped_file.extractall(data_dir)
@@ -53,19 +64,23 @@ def downlaod_file(cmd, unzipped_file_path, data_dir):
 
 
 def main():
-    """_summary_"""
-    logger.info("Commencing the data unzipping process")
+    """
+    Main function to run the script for downloading and unzipping data.
+    """
+    logger.info("Commencing the data downloading and unzipping process")
     try:
         for file in data_files:
             logger.info(f"Downloading {file} in {DATA_DIR}")
+
+            # Swap
             COMMAND[6] = file
-            unzipfile_path = DATA_DIR + file + ".zip"
-            downlaod_file(COMMAND, unzipfile_path, DATA_DIR)
+            zip_file_path = os.path.join(DATA_DIR, file + ".zip")
+            downlaod_file(COMMAND, zip_file_path, DATA_DIR)
             logger.info(f" {file} downloaded succesful")
         logger.success("All files downloaded succesful")
 
     except Exception as error:
-        logger.exception(f"Data unloading was unsuccesfully, due to {error}")
+        logger.exception(f"Data unloading was unsuccessful, due to {error}")
 
 
 if __name__ == "__main__":
