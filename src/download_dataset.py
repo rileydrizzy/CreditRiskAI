@@ -14,6 +14,8 @@ Functions:
 Usage:
     Ensure that the Kaggle API is properly configured on your system for successful data retrieval.
 
+Example:
+    $ python src/download_dataset.py
     
 """
 
