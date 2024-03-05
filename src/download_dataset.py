@@ -1,8 +1,8 @@
 """Dataset Download Module
 
 This module provides functionality to download and unzip data files for 
-the Amex Default Prediction Kaggle competition. It utilizes the Kaggle API to retrieve 
-the required data files in ZIP format and extracts them into a specified data directory.
+the American Express - Default Prediction Kaggle competition. It utilizes the Kaggle API
+to retrieve the required data files in ZIP format and extracts them into a specified data directory.
 
 Functions:
     download_file(cmd, unzipped_file_path, data_dir):
@@ -22,14 +22,14 @@ Example:
 import os
 import subprocess
 import zipfile
-
 from utils.logger import logger
 
 
-DATA_DIR = "data/raw/amex-default-prediction/"
-# kaggle/input/amex-default-prediction/raw
+DATA_DIR = "data/raw/"
 
-data_files = ["train_labels.csv", "train_data.csv"]
+# The COMMAND list contains the elements necessary to download a dataset from the Kaggle \
+# competition "amex-default-prediction".
+
 COMMAND = [
     "kaggle",
     "competitions",
@@ -41,6 +41,8 @@ COMMAND = [
     "-p",
     DATA_DIR,
 ]
+
+data_files = ["train_labels.csv", "train_data.csv"]
 
 
 def downlaod_file(cmd, unzipped_file_path, data_dir):
@@ -74,7 +76,7 @@ def main():
         for file in data_files:
             logger.info(f"Downloading {file} in {DATA_DIR}")
 
-            # Swap
+            # Replacing placeholder "FILE" with the filename
             COMMAND[6] = file
             zip_file_path = os.path.join(DATA_DIR, file + ".zip")
             downlaod_file(COMMAND, zip_file_path, DATA_DIR)
