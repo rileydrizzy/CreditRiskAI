@@ -14,7 +14,6 @@ Usage:
 """
 
 from pathlib import Path
-
 from loguru import logger
 
 FORMAT_STYLE = (
