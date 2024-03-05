@@ -99,3 +99,6 @@ data/*/*
 
 # Keys
 set_environment_variables.sh
+
+# Logs
+logs
