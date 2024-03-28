@@ -1,11 +1,15 @@
 asttokens==2.4.1
 bleach==6.1.0
 certifi==2024.2.2
+cfgv==3.4.0
 charset-normalizer==3.3.2
 comm==0.2.1
 debugpy==1.8.1
 decorator==5.1.1
+distlib==0.3.8
 executing==2.0.1
+filelock==3.13.1
+identify==2.5.35
 idna==3.6
 ipykernel==6.29.3
 ipython==8.22.2
@@ -16,10 +20,12 @@ kaggle==1.6.6
 loguru==0.7.2
 matplotlib-inline==0.1.6
 nest-asyncio==1.6.0
+nodeenv==1.8.0
 packaging==23.2
 parso==0.8.3
 pexpect==4.9.0
 platformdirs==4.2.0
+pre-commit==3.6.2
 prompt-toolkit==3.0.43
 psutil==5.9.8
 ptyprocess==0.7.0
@@ -29,6 +35,7 @@ Pygments==2.17.2
 pyspark==3.5.1
 python-dateutil==2.9.0.post0
 python-slugify==8.0.4
+PyYAML==6.0.1
 pyzmq==25.1.2
 requests==2.31.0
 six==1.16.0
@@ -38,5 +45,6 @@ tornado==6.4
 tqdm==4.66.2
 traitlets==5.14.1
 urllib3==2.2.1
+virtualenv==20.25.1
 wcwidth==0.2.13
 webencodings==0.5.1
